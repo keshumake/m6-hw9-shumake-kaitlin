@@ -1,5 +1,13 @@
 var btn = document.querySelector('button')
 var weatherEl = document.getElementById('searchweather')
+var formEl = document.querySelector('form')
+
+formEl.onsubmit = function(e) {
+    e.preventDefault()
+    var formData = new formData(e.target)
+    console.log(formData.get('search'))
+    console.log(Object.fromEntries(formData))
+}
 
 btn.onclick = function() {
     fetch('https://api.openweathermap.org/data/2.5/weather?q={cityname}&appid=f2fc7aa133392d3242a22babdd19e61b&units=imperial')
@@ -10,6 +18,8 @@ btn.onclick = function() {
         renderUsers(weatherResponse.results)
     })
 }
+
+
 
 function renderUsers(searchweather) {
         weatherEl.innerHTML= ""
