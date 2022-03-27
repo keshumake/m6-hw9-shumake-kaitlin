@@ -38,5 +38,5 @@ btn.onclick = function() {
         
 
         
-    })
+    });
 }
