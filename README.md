@@ -77,3 +77,7 @@ Other JS DOM API resouces:
 - [addEventListener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 - [onclick](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick)
 - [Event.target](https://developer.mozilla.org/en-US/docs/Web/API/Event/target)
+
+
+## Comments
+I struggled a bit with this assignment - I was following the lecture from 3/16 and tried to structure my JS application the same way. I could not get anything to happen when I would hit submit.

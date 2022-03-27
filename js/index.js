@@ -3,19 +3,20 @@ var weatherEl = document.getElementById('searchweather')
 var formEl = document.querySelector('form')
 
 formEl.onsubmit = function(e) {
-    e.preventDefault()
-    var formData = new formData(e.target)
-    console.log(formData.get('search'))
-    console.log(Object.fromEntries(formData))
-}
+  e.preventDefault()
+  console.log(searchweather.value)
 
-btn.onclick = function() {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q={cityname}&appid=f2fc7aa133392d3242a22babdd19e61b&units=imperial')
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchweather.value}&appid=f2fc7aa133392d3242a22babdd19e61b`)
     .then (function(weatherResponse) {
         return weatherResponse.json()
     })
-    .then(function(weatherResponse) {
-        renderUsers(weatherResponse.results)
+    .then(function(data) {
+        console.log(data)
+        weatherResponse.value = ""
+    })
+    .catch(function(error) {
+        console.log(error)
+        weatherResponse.innerHTML = "Please enter another location."
     })
 }
 
