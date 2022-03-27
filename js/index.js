@@ -1,9 +1,34 @@
+var btn = document.querySelector('button')
+var weatherEl = document.getElementById('searchweather')
+
 btn.onclick = function() {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=jacksonville&appid=f2fc7aa133392d3242a22babdd19e61b&units=imperial')
-    .then (function(res) {
-        return res.json()
+    .then (function(weatherResponse) {
+        return weatherResponse.json()
     })
-    .then(function(res) {
-        console.log(res)
+    .then(function(weatherData) {
+        console.log(weatherData)
+        weatherData.results.forEach(function(searchweather) {
+            var weatherDiv = document.createElement('div')
+            
+            
+            var location = document.createElement('h3')
+            location.textContent = searchweather.name + ", " + searchweather.sys.country
+            weatherDiv.appendChild(location)
+
+            var weatherResult = document.createElement('h3')
+            weatherResult.textContent = searchweather.weather.description
+            weatherDiv.appendChild(weatherResult)
+
+            var current = document. createElement('h3')
+            current.textContent = "Current: " + searchweather.main.temp
+            weatherDiv.appendChild(current)
+
+
+            weatherEl.appendChild(weatherDiv)
+        })
+        
+
+        
     })
 }
