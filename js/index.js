@@ -2,11 +2,16 @@ var btn = document.querySelector('button')
 var weatherEl = document.getElementById('searchweather')
 
 btn.onclick = function() {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=jacksonville&appid=f2fc7aa133392d3242a22babdd19e61b&units=imperial')
+    fetch('https://api.openweathermap.org/data/2.5/weather?q={cityname}&appid=f2fc7aa133392d3242a22babdd19e61b&units=imperial')
     .then (function(weatherResponse) {
         return weatherResponse.json()
     })
-    .then(function(weatherData) {
+    .then(function(weatherResponse) {
+        renderUsers(weatherResponse.results)
+    })
+}
+
+function renderUsers(searchweather) {
         weatherEl.innerHTML= ""
         weatherData.results.forEach(function(searchweather) {
             var weatherDiv = document.createElement('div')
@@ -34,9 +39,6 @@ btn.onclick = function() {
 
 
             weatherEl.appendChild(weatherDiv)
-        })
+        });
         
-
-        
-    });
 }
