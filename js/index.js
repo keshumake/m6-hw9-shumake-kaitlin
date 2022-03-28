@@ -7,16 +7,16 @@ formEl.onsubmit = function(e) {
   console.log(searchweather.value)
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchweather.value}&appid=f2fc7aa133392d3242a22babdd19e61b`)
-    .then (function(weatherResponse) {
-        return weatherResponse.json()
+    .then (function(weatherEl) {
+        return weatherEl.json()
     })
-    .then(function(data) {
-        console.log(data)
-        weatherResponse.value = ""
+    .then(function(weatherEl) {
+        console.log(weatherEl)
+        weatherEl.value = ""
     })
     .catch(function(error) {
         console.log(error)
-        weatherResponse.innerHTML = "Please enter another location."
+        weatherEl.innerHTML = "Please enter another location."
     })
 }
 
@@ -24,7 +24,7 @@ formEl.onsubmit = function(e) {
 
 function renderUsers(searchweather) {
         weatherEl.innerHTML= ""
-        weatherData.results.forEach(function(searchweather) {
+        searchweather.forEach(searchweather => {
             var weatherDiv = document.createElement('div')
             
             var location = document.createElement('h3')
