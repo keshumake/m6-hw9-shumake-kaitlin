@@ -19,8 +19,9 @@ formEl.addEventListener('submit', function (e) {
             .then(data => {
                 const icon = 'https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png';
             })
-        }
-function renderUsers(searchweather) {
+        })
+        
+        function renderUsers(searchweather) {
         weatherResponse.results.forEach(function (searchweather) {
             var weatherDiv = document.createElement('div')
 
