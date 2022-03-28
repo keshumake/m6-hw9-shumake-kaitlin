@@ -1,30 +1,20 @@
 var btn = document.querySelector('button')
 var weatherEl = document.getElementById('searchweather')
 var formEl = document.querySelector('form')
-
-formEl.onsubmit = function(e) {
-  e.preventDefault()
-  console.log(searchweather.value)
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchweather.value}&appid=f2fc7aa133392d3242a22babdd19e61b`)
-    .then (function(weatherResponse) {
-        return weatherResponse.json()
-    })
-    .then(function(data) {
-        console.log(data)
-        weatherResponse.value = ""
-    })
-    .catch(function(error) {
-        console.log(error)
-        weatherResponse.innerHTML = "Please enter another location."
-    })
-}
+var weatherResponse = document.querySelector('input[type=text]')
 
 
+formEl.addEventListener('submit', function (e) {
+        e.preventDefault()
+        const weatherValue = input.value;
+        console.log(searchweather.value)
 
-function renderUsers(searchweather) {
-        weatherEl.innerHTML= ""
-        weatherData.results.forEach(function(searchweather) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchweather.value}&appid=f2fc7aa133392d3242a22babdd19e61b`)
+            .then(Response => weatherResponse.json())
+            .then(data => {
+                const icon = 'https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png';
+                
+        weatherResponse.results.forEach(function(searchweather) {
             var weatherDiv = document.createElement('div')
             
             var location = document.createElement('h3')
@@ -50,6 +40,14 @@ function renderUsers(searchweather) {
 
 
             weatherEl.appendChild(weatherDiv)
+        })
+        .catch(() => {
+            weatherResponse.textContent = "Please enter a valid city.";
         });
-        
-}
+
+        weatherResponse.textContent = "";
+        formEl.reset();
+        input.focus();
+
+        })
+    });
