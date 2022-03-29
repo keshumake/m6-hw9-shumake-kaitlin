@@ -23,11 +23,13 @@ header {
 header h1 {
     color: white;
     font-size: 3em;
+    letter-spacing: .05em;
 }
 
 label, h3 {
     font-size: 2em;
     color: white;
+    font-weight: 250;
 }
 
 h2 {

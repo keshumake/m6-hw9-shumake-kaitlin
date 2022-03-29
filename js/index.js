@@ -12,8 +12,8 @@ formEl.onsubmit = function(e) {
     })
     .then(function(jsonResponse) {
         console.log(jsonResponse)
-        var weatherDiv2 = document.getElementById('weather')
-        weatherDiv2.appendChild(renderWeather(jsonResponse))
+        var showResults = document.getElementById('weather')
+        showResults.appendChild(renderWeather(jsonResponse))
     })
     .catch(function(error) {
         console.log(error)
